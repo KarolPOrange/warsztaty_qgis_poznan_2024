@@ -1,0 +1,1 @@
+# warsztaty_qgis_poznan_2024
