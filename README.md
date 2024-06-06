@@ -1,6 +1,8 @@
 # Warsztaty QGiS "API z API" - Poznań 2024
 ### Założenia warsztatu
-Lorem ipsum
+Praktyczne warsztaty podczas, których uczestnicy poznają metody pobierania i wizualizacji danych przestrzennych, udostępnionych za pomocą zewnętrznego API.
+W ramach szkolenia zostanie stworzona od podstaw wtyczka QGiSowa, która będzie korzystać z ogólnodostępnych danych o jakości powietrza, udostępnionych przez Główny Inspektorat Ochrony Środowiska.
+Wynikiem warsztatów zostanie w pełni funkcjonalna wtyczka, stworzona z wykorzystaniem takich technologii, jak Python, pyqgis oraz pyQt.
 
 ### Konfiguracja Środowiska
 W ramach warsztatów będziemy korzystać z zintegrowanego środowiska programistycznego (IDE) PyCharm.
