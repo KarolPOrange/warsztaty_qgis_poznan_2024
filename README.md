@@ -13,10 +13,9 @@ Konfiguracja PyCharma z QGiSem następuję w następujących krokach.
 
 ![wybieranieSciezka_0](https://github.com/KarolPOrange/warsztaty_qgis_poznan_2024/assets/149786515/623604dd-5534-4d48-8394-586cdc630570)
 
-3. Stworzenie wirtualnego środowiska z wykorzystaniem środowiska QGiSowego
+3. Wybranie wirtualnego środowiska QGiSowego
 
-![wybieranieSciezka](https://github.com/KarolPOrange/warsztaty_qgis_poznan_2024/assets/149786515/b0459bd8-b385-4448-a0ab-cd6a2e388048)
+![zrzut](https://github.com/KarolPOrange/warsztaty_qgis_poznan_2024/assets/61205666/110b415a-8ffc-451a-b3ca-73996b0408a7)
 
-4. Po stworzniu nowego środowiska trzeba chwile poczekać na skofigurowanie się PyCharma.
+4. Po stworzniu nowego środowiska trzeba chwile poczekać na skofigurowanie się PyCharma
 
-### Konfiguracja Środowiska
