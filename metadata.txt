@@ -1,13 +1,13 @@
 [general]
-name=Indeks Jakości Powietrza
+name=Api z Api
 description=Wizualizacja danych o jakości powietrza
 about=Wtyczka pobierająca za pomocą API i wizualizująca dane o jakości powietrza
 
-version=2024.06.26
+version=2024.06
 
 qgisMinimumVersion=3.28
-author=Orange Polska
-email=orange@orange.com
+author=Ja
+email=email@email.com
 
 icon=icons/api.svg
 
