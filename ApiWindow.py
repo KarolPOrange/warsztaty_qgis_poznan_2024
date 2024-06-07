@@ -10,6 +10,7 @@ from qgis.core import QgsProject, QgsFeature, QgsVectorLayer
 from qgis.utils import iface
 
 from .GiosApi import GiosApi
+from .utils import nadajStylWarstwie, interpolacja, nadajStylRastrowi
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(os.path.dirname(__file__), 'ApiWindow.ui'))
 
@@ -54,6 +55,13 @@ class ApiWindow(QMainWindow, FORM_CLASS):
 
         self._aktualizujWierszeWTabeli()
 
+    def on_pbInterpolacja_released(self):
+        if self.stationsLayer:
+            raster = interpolacja(self.stationsLayer, self._indicatorName())
+            nadajStylRastrowi(raster)
+            self.graphicsView.setLayers([])  # wyczyść warstwy
+            self.graphicsView.setLayers([self.stationsLayer, raster, self._osmLayer()])  # dodaj warstwy do widoku
+            self.graphicsView.show()
 
     def _aktualizujWierszeWTabeli(self):
         """Dodaje wypełnione wiersze w tabeli dla elementów z warstwy"""
@@ -88,13 +96,15 @@ class ApiWindow(QMainWindow, FORM_CLASS):
         self.graphicsView.setLayers([])  # wyczyść warstwy
         self.twDane.setRowCount(0)  # usuń wiersze
         self.stationsLayer = None
+        QgsProject.instance().removeAllMapLayers()
 
     def _setStationLayer(self):
         """Ustaw warstwe z danymi o stacjach i wartościach wskaźników jakości powietrza."""
         with requests.Session() as session:
             giosApi = GiosApi(session)
             self.stationsLayer = giosApi.pobierzWarstwe(self._indicatorName())
-
+            nadajStylWarstwie(self.stationsLayer, self._indicatorName())
+            QgsProject.instance().addMapLayer(self.stationsLayer)
 
     def _osmLayer(self) -> QgsVectorLayer:
         """Zwraca warstwę OSM jeżeli została dodana do projektu.
@@ -123,7 +133,7 @@ class ApiWindow(QMainWindow, FORM_CLASS):
 
         self._uncheckButtons(self.frameTop, buttonToSkip=button)  # odznacz pozostałe przyciski wskaźników
         self._setStationLayer()  # ustaw warstwę z danymi o stacjach
-        self._setGraphicView()  # ustaw wizualizacjęty
+        self._setGraphicView()  # ustaw wizualizację
         self._aktualizujWierszeWTabeli()  # aktualizuj dane w tabeli
 
 
