@@ -23,7 +23,10 @@ class GiosApi:
     @classmethod
     def pobierzStacjePomiarowe(cls) -> dict:
         """Pobierz wszystkie stacje pomiarowe."""
-        response = requests.get(cls.URLS['stacje'], headers=cls.HEADERS, params=cls.PARAMS)
+        try:
+            response = requests.get(cls.URLS['stacje'], headers=cls.HEADERS, params=cls.PARAMS)
+        except requests.exceptions.RequestException:
+            return {}
         return response.json()
 
     def _pobierzIdStanowiskaPom(self, idStacji: int, nazwaWskaznika: str) -> str | None:
@@ -40,16 +43,19 @@ class GiosApi:
 
     def _pobierzDaneDlaWskaznika(self, idStacji: int, nazwaWskaznika: str) -> int | None:
         """Pobierz wartości danego wskaźnika, w wybranej stacji pomiarowej."""
-        idStanowiskaPom = self._pobierzIdStanowiskaPom(idStacji, nazwaWskaznika)
+        try:
+            idStanowiskaPom = self._pobierzIdStanowiskaPom(idStacji, nazwaWskaznika)
 
-        if not idStanowiskaPom:
+            if not idStanowiskaPom:
+                return None
+
+            URL = f"{self.URLS['wskazniki']}{idStanowiskaPom}"
+            response = self.session.get(URL, headers=self.HEADERS, params=self.PARAMS)
+            wartoscWskaznika = response.json().get("Lista danych pomiarowych", None)
+            wartoscWskaznika = (float(sum(d['Wartość'] if d['Wartość'] else 0 for d in wartoscWskaznika)) /
+                                len(wartoscWskaznika)) if wartoscWskaznika else None
+        except requests.exceptions.RequestException:
             return None
-
-        URL = f"{self.URLS['wskazniki']}{idStanowiskaPom}"
-        response = self.session.get(URL, headers=self.HEADERS, params=self.PARAMS)
-        wartoscWskaznika = response.json().get("Lista danych pomiarowych", None)
-        wartoscWskaznika = float(sum(d['Wartość'] if d['Wartość'] else 0 for d in wartoscWskaznika)) / len(
-            wartoscWskaznika) if wartoscWskaznika else None
 
         return int(wartoscWskaznika) if wartoscWskaznika else None
 
@@ -79,9 +85,9 @@ class GiosApi:
 
     def pobierzWarstwe(self, nazwaWskaznika: str) -> QgsVectorLayer:
         """Pobierz dane o wartości danego wskaźnika powietrza dla stacji pomiaorych w Polsce."""
-        if not nazwaWskaznika:
+        if not (stajcePomiarowe := self.pobierzStacjePomiarowe()):
             return QgsVectorLayer()
-        stacje = pd.json_normalize(self.pobierzStacjePomiarowe()['Lista stacji pomiarowych'])
+        stacje = pd.json_normalize(stajcePomiarowe['Lista stacji pomiarowych'])
         stacje.rename(columns={'Identyfikator stacji': 'id_stacji',
                                'Kod stacji': 'kod_stacji',
                                'Nazwa stacji': 'nazwa_stacji',
