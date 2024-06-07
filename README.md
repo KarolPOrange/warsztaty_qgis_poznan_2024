@@ -30,6 +30,8 @@ i odbieranie zawartości z danego serwisu. API dostępne przez Internet przy uż
 to inaczej API sieciowe. Pobieranie oraz publikowanie informacji w sieci wymaga wysłania żądania do API.
 [Link do artykułu](https://support.apple.com/pl-pl/guide/shortcuts-mac/apd2e30c9d45/mac#:~:text=API%2C%20czyli%20interfejs%20programowania%20aplikacji,odbieranie%20zawarto%C5%9Bci%20z%20danego%20serwisu.)
 
+![rest-api](https://github.com/KarolPOrange/warsztaty_qgis_poznan_2024/assets/61205666/f4b53c22-02eb-47f9-be19-8c787d011db9)
+
 
 ### Jakie dane oferuje Główny Inspektorat Ochrony Środowiska (GIOŚ) ?
 GIOŚ umożliwia dostęp do danych dotyczących jakości powietrza w Polsce, wytwarzanych w ramach Państwowego Monitoringu 
@@ -44,4 +46,7 @@ W skład danych udostępnionych przez GIOŚ wchodzą międzyinnymi:
 Dane udostępniane są w formacie JSON, dzięki czemu mogą być w łatwy sposób parsowane przez struktury danych dostępne w Pythonie.
 Dokumentację wraz z przykładami wykorzystania zapytań API można znaleźć pod [tym linkiem](https://powietrze.gios.gov.pl/pjp/content/api).
 
-Przykład odpowiedzi:
+Przykład odpowiedzi API:
+
+![przykład odpowiedzi](https://github.com/KarolPOrange/warsztaty_qgis_poznan_2024/assets/61205666/9eee7605-eb5e-4ea7-8441-022c732da466)
+
