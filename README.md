@@ -63,4 +63,10 @@ Pozwoli nam to w szybki sposób zbudowanie interfejsu naszej wtyczki oraz podł�
 
 pyQt pozwala tworzyć GUI w dwojaki sposób:
 - z poziomu kodu
+
+![kodQt](https://github.com/KarolPOrange/warsztaty_qgis_poznan_2024/assets/61205666/49c45522-d670-42ba-a032-f50511a63224)
+
 - za pomocą dedykowanego narzędzia (Qt Designer)
+
+![qtDesigner](https://github.com/KarolPOrange/warsztaty_qgis_poznan_2024/assets/61205666/8e8c9f67-11b6-4a2a-bc1e-8ef945f02070)
+
