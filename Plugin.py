@@ -6,6 +6,8 @@ import os
 from qgis.PyQt.QtGui import QIcon, QAction
 from qgis.gui import QgisInterface
 
+from .ApiWindow import ApiWindow
+
 
 class Akcja:
     ikona = QIcon(os.path.join(os.path.dirname(__file__), 'icons', 'api.svg'))
@@ -38,4 +40,5 @@ class Plugin:
 
     def run(self):
         """Otwiera/zamyka okno"""
-        print("RUN")
+        window = ApiWindow()
+        window.show()

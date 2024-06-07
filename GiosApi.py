@@ -3,7 +3,7 @@ from __future__ import annotations
 import pandas as pd
 import requests
 from qgis.PyQt.QtCore import QVariant
-from qgis.core import QgsVectorLayer, QgsProject, QgsField, QgsFeature, QgsGeometry, QgsPointXY
+from qgis.core import QgsVectorLayer, QgsField, QgsFeature, QgsGeometry, QgsPointXY
 
 
 class GiosApi:
@@ -103,10 +103,3 @@ class GiosApi:
         self._aktualizaujDanePomiarowe(stacje, nazwaWskaznika)
         stacje.dropna(subset=[nazwaWskaznika], inplace=True)
         return self._zapisDoWarstwy(stacje)
-
-
-if __name__ == '__main__':
-    with requests.Session() as session:
-        giosApi = GiosApi(session)
-        warstwa = giosApi.pobierzWarstwe('PM10')
-        QgsProject.instance().addMapLayer(warstwa)

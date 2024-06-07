@@ -50,3 +50,17 @@ Przykład odpowiedzi API:
 
 ![przykład odpowiedzi](https://github.com/KarolPOrange/warsztaty_qgis_poznan_2024/assets/61205666/9eee7605-eb5e-4ea7-8441-022c732da466)
 
+## Interfejs użytkownika z pyQt
+Interfejs użytkownika zbudowany jest w QGiSie za pomocą freamworku Qt.
+Framework Qt zawiera kompleksowy zestaw wysoce intuicyjnych i modułowych klas bibliotek C++.
+Qt tworzy bardzo czytelny, łatwy w utrzymaniu i nadający się do ponownego użycia kod, 
+charakteryzujący się wysoką wydajnością w czasie wykonywania i niewielkimi rozmiarami, ponadto jest wieloplatformowy.
+Dodatkowo Qt jest wyposażony w interfejsy API, które upraszczają tworzenie aplikacji oraz pozwala na tworzenie GUI w 
+innych językach programownia.
+
+Na warsztatach skorzystamy właśnie z API Python-owego (nazwane pyQt - [dokumentacja](https://doc.qt.io/qtforpython-6/). 
+Pozwoli nam to w szybki sposób zbudowanie interfejsu naszej wtyczki oraz podłączenie pod dane elementy GUI naszych funkcjonalności.
+
+pyQt pozwala tworzyć GUI w dwojaki sposób:
+- z poziomu kodu
+- za pomocą dedykowanego narzędzia (Qt Designer)
