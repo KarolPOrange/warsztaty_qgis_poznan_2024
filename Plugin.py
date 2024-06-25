@@ -44,6 +44,7 @@ class Plugin:
 
     def unload(self):
         """Rozładuj wtyczkę."""
+        self.actionRun.triggered.disconnect(self.run)  # rozłącz sygnał 'run'
         iface.pluginToolBar().removeAction(self.actionRun)  # usuń akcję z paska narzędzi
         iface.pluginMenu().removeAction(self.actionRun)  # usuń akcję z menu QGIS
 
