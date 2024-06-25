@@ -22,8 +22,6 @@ class ApiWindow(QMainWindow, FORM_CLASS):
         self.setWindowIcon(QIcon(os.path.join(os.path.dirname(__file__), './icons', 'api.svg')))
         self.wgtCenterMenu.hide()
         self.stationsLayer = None
-        self.indicatorName = None
-        self.graphicsView.setCachingEnabled(True)
 
 
     def on_pbPM10_released(self):
