@@ -1,0 +1,15 @@
+[general]
+name=Api z Api
+description=Wtyczka z warsztatu Api z Api
+about=Wtyczka powstała na warsztacie Api z Api
+
+version=2024.06
+
+qgisMinimumVersion=3.28.0
+author=Ja
+email=email@
+
+icon=icons/api.svg
+
+category=Plugins
+experimental=False
